@@ -12,9 +12,9 @@ public class Cliente {
     private String nome;
 
     @ManyToOne
-    private String endereco;
+    private Endereco endereco;
 
-    public Cliente(Long id, String nome, String endereco) {
+    public Cliente(Long id, String nome, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
@@ -36,11 +36,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 }
