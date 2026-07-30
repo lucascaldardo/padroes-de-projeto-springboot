@@ -15,23 +15,26 @@ public class ClienteRestController {
 
     @GetMapping("/todos")
     public ResponseEntity<Iterable<Cliente>> buscarTodos(){
+        clienteService.buscarTodos();
         return ResponseEntity.ok(clienteService.buscarTodos());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> buscarPorId(@PathVariable Long id){
+        clienteService.buscarPorId(id);
         return ResponseEntity.ok(clienteService.buscarPorId(id));
     }
 
     @PostMapping("/criar")
     public ResponseEntity<Cliente> inserir(@RequestBody Cliente cliente){
-        return ResponseEntity.ok(cliente);
+        Cliente clienteSalvo = clienteService.inserir(cliente);
+        return ResponseEntity.ok(clienteSalvo);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente){
-        clienteService.atualizar(id, cliente);
-        return ResponseEntity.ok(cliente);
+        Cliente clienteAtualizado = clienteService.atualizar(id, cliente);
+        return ResponseEntity.ok(clienteAtualizado);
     }
 
     @DeleteMapping("/deletar/{id}")
